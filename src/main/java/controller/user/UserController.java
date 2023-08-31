@@ -37,6 +37,7 @@ public class UserController {
         return ResponseEntity.ok().body(users);
     }
 
+    // update
     @PutMapping("/api/users/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id,
                                            @RequestBody UpdateUserRequest request) {
@@ -45,4 +46,11 @@ public class UserController {
         return ResponseEntity.ok().body(updatedUser);
     }
 
+    // delete
+    @DeleteMapping("/api/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.delete(id);
+
+        return ResponseEntity.ok().build();
+    }
 }
