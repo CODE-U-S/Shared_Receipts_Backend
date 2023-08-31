@@ -2,14 +2,13 @@ package controller.user;
 
 import domain.user.User;
 import dto.user.AddUserRequest;
+import dto.user.UpdateUserRequest;
 import dto.user.UserResponse;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.sql.Update;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import service.user.UserService;
 
 import java.util.List;
@@ -38,5 +37,12 @@ public class UserController {
         return ResponseEntity.ok().body(users);
     }
 
+    @PutMapping("/api/users/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id,
+                                           @RequestBody UpdateUserRequest request) {
+        User updatedUser = userService.update(request);
+
+        return ResponseEntity.ok().body(updatedUser);
+    }
 
 }
