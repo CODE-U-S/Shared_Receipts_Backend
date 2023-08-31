@@ -20,7 +20,7 @@ public class UserController {
 
     // create
     @PostMapping("/api/users")
-    public ResponseEntity<User> addUser(@ResponseBody AddUserRequest request) {
+    public ResponseEntity<User> addUser(@RequestBody AddUserRequest request) {
         User savedUser = userService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedUser);
@@ -41,7 +41,7 @@ public class UserController {
     @PutMapping("/api/users/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id,
                                            @RequestBody UpdateUserRequest request) {
-        User updatedUser = userService.update(request);
+        User updatedUser = userService.update(id, request);
 
         return ResponseEntity.ok().body(updatedUser);
     }
