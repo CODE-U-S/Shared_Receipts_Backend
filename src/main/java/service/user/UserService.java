@@ -48,6 +48,7 @@ public class UserService {
     public Long signUpUser(AddUserRequest dto) {
         return userRepository.save(User.builder()
                 .userId(dto.getUserId())
+                .userPw(dto.getUserPw())
                 .build()
         ).getUserNo();
     }
