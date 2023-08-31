@@ -1,10 +1,10 @@
-package service.user;
+package com.share.share_scripts.service.user;
 
-import domain.user.User;
+import com.share.share_scripts.repository.user.UserRepository;
+import com.share.share_scripts.domain.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
-import repository.user.UserRepository;
 
 @Service
 @RequiredArgsConstructor

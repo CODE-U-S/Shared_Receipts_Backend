@@ -1,12 +1,11 @@
-package dto.user;
+package com.share.share_scripts.dto.user;
 
-import domain.user.User;
+import com.share.share_scripts.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Blob;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -21,7 +20,7 @@ public class AddUserRequest {
     private String userPhone;
     private Date userBirth;
     private Integer userGender;
-    private Blob userImg;
+    private String userImg;
 
     public User toEntity() {
         return User.builder()
