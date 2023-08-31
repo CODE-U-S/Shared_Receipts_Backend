@@ -1,4 +1,4 @@
-package domain.user;
+package com.share.share_scripts.domain.user;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -9,7 +9,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.sql.Blob;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -46,10 +45,10 @@ public class User implements UserDetails {
     private Integer userGender;
 
     @Column(name = "user_img", nullable = false)
-    private Blob userImg;
+    private String userImg;
 
     @Builder
-    public User(String userName, String userId, String userPw, String userEmail, String userPhone, Date userBirth, Integer userGender, Blob userImg) {
+    public User(String userName, String userId, String userPw, String userEmail, String userPhone, Date userBirth, Integer userGender, String userImg) {
         this.userName = userName;
         this.userId = userId;
         this.userPw = userPw;
@@ -60,7 +59,7 @@ public class User implements UserDetails {
         this.userImg = userImg;
     }
 
-    public void update(String userName, String userId, String userPw, String userEmail, String userPhone, Date userBirth, Integer userGender, Blob userImg) {
+    public void update(String userName, String userId, String userPw, String userEmail, String userPhone, Date userBirth, Integer userGender, String userImg) {
         this.userName = userName;
         this.userId = userId;
         this.userPw = userPw;

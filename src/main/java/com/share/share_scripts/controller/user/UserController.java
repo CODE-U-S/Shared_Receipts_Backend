@@ -1,15 +1,14 @@
-package controller.user;
+package com.share.share_scripts.controller.user;
 
-import domain.user.User;
-import dto.user.AddUserRequest;
-import dto.user.UpdateUserRequest;
-import dto.user.UserResponse;
+import com.share.share_scripts.dto.user.UpdateUserRequest;
+import com.share.share_scripts.dto.user.UserResponse;
+import com.share.share_scripts.service.user.UserService;
+import com.share.share_scripts.domain.user.User;
+import com.share.share_scripts.dto.user.AddUserRequest;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.sql.Update;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.user.UserService;
 
 import java.util.List;
 

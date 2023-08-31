@@ -1,13 +1,12 @@
-package service.user;
+package com.share.share_scripts.service.user;
 
-import domain.user.User;
-import dto.user.AddUserRequest;
-import dto.user.UpdateUserRequest;
-import dto.user.UserResponse;
+import com.share.share_scripts.dto.user.UpdateUserRequest;
+import com.share.share_scripts.repository.user.UserRepository;
+import com.share.share_scripts.domain.user.User;
+import com.share.share_scripts.dto.user.AddUserRequest;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import repository.user.UserRepository;
 
 import java.util.List;
 

@@ -1,9 +1,8 @@
-package dto.user;
+package com.share.share_scripts.dto.user;
 
-import domain.user.User;
+import com.share.share_scripts.domain.user.User;
 import lombok.Getter;
 
-import java.sql.Blob;
 import java.util.Date;
 
 @Getter
@@ -16,7 +15,7 @@ public class UserResponse {
     private final String userPhone;
     private final Date userBirth;
     private final Integer userGender;
-    private final Blob userImg;
+    private final String userImg;
 
     public UserResponse(User user) {
         this.userNo = user.getUserNo();

@@ -1,6 +1,6 @@
-package repository.user;
+package com.share.share_scripts.repository.user;
 
-import domain.user.User;
+import com.share.share_scripts.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

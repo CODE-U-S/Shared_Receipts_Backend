@@ -1,10 +1,9 @@
-package dto.user;
+package com.share.share_scripts.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.sql.Blob;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -18,5 +17,5 @@ public class UpdateUserRequest {
     private String userPhone;
     private Date userBirth;
     private Integer userGender;
-    private Blob userImg;
+    private String userImg;
 }
