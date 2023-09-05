@@ -6,6 +6,7 @@ import com.share.share_scripts.domain.user.User;
 import com.share.share_scripts.dto.user.AddUserRequest;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     // create
     public User save(AddUserRequest request) { return userRepository.save(request.toEntity()); }
@@ -47,7 +49,7 @@ public class UserService {
     public Long signUpUser(AddUserRequest dto) {
         return userRepository.save(User.builder()
                 .userId(dto.getUserId())
-                .userPw(dto.getUserPw())
+                .userPw(bCryptPasswordEncoder.encode(dto.getUserPw()))
                 .build()
         ).getUserNo();
     }
