@@ -36,12 +36,19 @@ public class LinkController {
         return ResponseEntity.ok().body(link);
     }
 
-    @PutMapping("/api/post/{id}")
+    @PutMapping("/api/link/{id}")
     public ResponseEntity<Link> updateLink(@PathVariable Long id,
                                            @RequestBody UpdateLinkRequest request) {
         Link updatedLink = linkService.update(id, request);
 
         return ResponseEntity.ok()
                 .body(updatedLink);
+    }
+
+    @DeleteMapping("/api/link/{id}")
+    public ResponseEntity<Void> deleteLink(@PathVariable Long id) {
+        linkService.delete(id);
+        return ResponseEntity.ok()
+                .build();
     }
 }
