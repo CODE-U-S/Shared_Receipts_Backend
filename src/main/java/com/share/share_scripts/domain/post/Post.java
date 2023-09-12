@@ -16,8 +16,8 @@ public class Post {
     @Column(name = "post_no", updatable = false)
     private Long postNo;
 
-    @ManyToOne
-    @JoinColumn(name = "user_no")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_no", referencedColumnName = "user_no")
     private User userNo;
 
     @Column(name = "receipt_count", nullable = false)
