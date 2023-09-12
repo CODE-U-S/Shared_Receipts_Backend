@@ -16,4 +16,6 @@ public class FavoriteService {
     public Favorite save(AddFavoriteRequest request) { return favoriteRepository.save(request.toEntity()); }
 
     public List<Favorite> findAll() { return favoriteRepository.findAll(); }
+
+    public void delete(Long id) { favoriteRepository.deleteById(id); }
 }
