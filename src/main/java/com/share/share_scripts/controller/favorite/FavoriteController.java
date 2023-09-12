@@ -5,9 +5,7 @@ import com.share.share_scripts.dto.favorite.AddFavoriteRequest;
 import com.share.share_scripts.dto.favorite.FavoriteResponse;
 import com.share.share_scripts.dto.favorite.UpdateFavoriteRequest;
 import com.share.share_scripts.service.favorite.FavoriteService;
-import lombok.Generated;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,5 +42,12 @@ public class FavoriteController {
 
         return ResponseEntity.ok()
                 .body(updatedFavorite);
+    }
+
+    @DeleteMapping("/api/favorite/{id}")
+    public ResponseEntity<Void> deleteFavorite(@PathVariable Long id) {
+        favoriteService.delete(id);
+        return ResponseEntity.ok()
+                .build();
     }
 }
