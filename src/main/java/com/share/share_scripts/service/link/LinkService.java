@@ -8,6 +8,8 @@ import com.share.share_scripts.repository.post.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class LinkService {
@@ -16,4 +18,6 @@ public class LinkService {
     public Link save(AddLinkRequest request) {
         return linkRepository.save(request.toEntity());
     }
+
+    public List<Link> findAll() { return linkRepository.findAll(); }
 }
