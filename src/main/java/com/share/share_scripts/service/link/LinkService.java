@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class LinkService {
-    private LinkRepository linkRepository;
+    private final LinkRepository linkRepository;
 
     public Link save(AddLinkRequest request) {
         return linkRepository.save(request.toEntity());

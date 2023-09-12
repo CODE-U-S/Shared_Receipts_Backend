@@ -6,7 +6,6 @@ import com.share.share_scripts.dto.link.LinkResponse;
 import com.share.share_scripts.dto.link.UpdateLinkRequest;
 import com.share.share_scripts.service.link.LinkService;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.sql.Update;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
