@@ -21,7 +21,6 @@ public class PostController {
     @PostMapping("/api/post")
     public ResponseEntity<Post> addPost(@RequestBody AddPostRequest request) {
         Post savedPost = postService.save(request);
-
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedPost);
     }
