@@ -20,4 +20,6 @@ public class LinkService {
     }
 
     public List<Link> findAll() { return linkRepository.findAll(); }
+
+    public void delete(Long id) { linkRepository.deleteById(id); }
 }
