@@ -3,16 +3,14 @@ package com.share.share_scripts.controller.receipt;
 import com.share.share_scripts.domain.receipt.Receipt;
 import com.share.share_scripts.dto.receipt.AddReceiptRequest;
 import com.share.share_scripts.dto.receipt.ReceiptResponse;
+import com.share.share_scripts.dto.receipt.UpdateReceiptRequest;
 import com.share.share_scripts.service.link.LinkService;
 import com.share.share_scripts.service.receipt.ReceiptService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.util.List;
@@ -37,5 +35,14 @@ public class ReceiptController {
                 .toList();
 
         return ResponseEntity.ok().body(receipt);
+    }
+
+    @PutMapping("/api/receipt/{id}")
+    public ResponseEntity<Receipt> updateReceipt(@PathVariable Long id,
+                                                 @RequestBody UpdateReceiptRequest request) {
+        Receipt updatedReceipt = receiptService.update(id, request);
+
+        return ResponseEntity.ok()
+                .body(updatedReceipt);
     }
 }
