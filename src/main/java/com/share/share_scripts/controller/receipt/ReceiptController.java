@@ -45,4 +45,11 @@ public class ReceiptController {
         return ResponseEntity.ok()
                 .body(updatedReceipt);
     }
+
+    @DeleteMapping("/api/receipt/{id}")
+    public ResponseEntity<Void> deleteReceipt(@PathVariable Long id) {
+        receiptService.delete(id);
+        return ResponseEntity.ok()
+                .build();
+    }
 }
