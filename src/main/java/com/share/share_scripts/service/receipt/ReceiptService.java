@@ -3,7 +3,9 @@ package com.share.share_scripts.service.receipt;
 import com.share.share_scripts.domain.receipt.Receipt;
 import com.share.share_scripts.dto.post.AddPostRequest;
 import com.share.share_scripts.dto.receipt.AddReceiptRequest;
+import com.share.share_scripts.dto.receipt.UpdateReceiptRequest;
 import com.share.share_scripts.repository.receipt.ReceiptRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +24,15 @@ public class ReceiptService {
 
     public void delete(Long id) { receiptRepository.deleteById(id); }
 
+    @Transactional
+    public Receipt update(Long id, UpdateReceiptRequest request) {
+        Receipt receipt = receiptRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
 
+        receipt.update(request.getPostNo(),
+                request.getName(),
+                request.getPrice());
+
+        return receipt;
+    }
 }
