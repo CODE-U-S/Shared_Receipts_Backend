@@ -7,6 +7,8 @@ import com.share.share_scripts.repository.receipt.ReceiptRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class ReceiptService {
@@ -15,4 +17,6 @@ public class ReceiptService {
     public Receipt save(AddReceiptRequest request) {
         return receiptRepository.save(request.toEntity());
     }
+
+    public List<Receipt> findAll() { return receiptRepository.findAll(); }
 }
