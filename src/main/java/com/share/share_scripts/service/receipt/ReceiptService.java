@@ -19,4 +19,8 @@ public class ReceiptService {
     }
 
     public List<Receipt> findAll() { return receiptRepository.findAll(); }
+
+    public void delete(Long id) { receiptRepository.deleteById(id); }
+
+
 }
