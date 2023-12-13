@@ -22,7 +22,7 @@ public class Post {
     @Column(name = "post_no", updatable = false)
     private Long postNo;
 
-    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne
     @JoinColumn(name = "user_no")
     private User userNo;
 
