@@ -11,18 +11,18 @@ import lombok.NoArgsConstructor;
 @Getter
 public class AddPostRequest {
     private User userNo;
-    private Long receiptCount;
-    private String title;
-    private String tag;
-    private String explain;
+    private Long userCount;
+    private String postTitle;
+    private String postTag;
+    private String postExplain;
 
     public Post toEntity() {
         return Post.builder()
                 .userNo(userNo)
-                .receiptCount(receiptCount)
-                .title(title)
-                .tag(tag)
-                .explain(explain)
+                .userCount(userCount)
+                .postTitle(postTitle)
+                .postTag(postTag)
+                .postExplain(postExplain)
                 .build();
     }
 }

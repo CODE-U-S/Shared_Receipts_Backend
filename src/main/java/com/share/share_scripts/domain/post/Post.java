@@ -16,36 +16,35 @@ public class Post {
     @Column(name = "post_no", updatable = false)
     private Long postNo;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_no", referencedColumnName = "user_no")
+    @ManyToOne
+    @JoinColumn(name = "user_no")
     private User userNo;
 
-    @Column(name = "receipt_count", nullable = false)
-    private Long receiptCount;
+    @Column(name = "user_count", nullable = false)
+    private Long userCount;
 
-    @Column(name = "title", nullable = false)
-    private String title;
+    @Column(name = "post_title", nullable = false)
+    private String postTitle;
 
-    @Column(name = "tag", nullable = false)
-    private String tag;
+    @Column(name = "post_tag", nullable = false)
+    private String postTag;
 
-    @Column(name = "explain")
-    private String explain;
+    @Column(name = "post_explain")
+    private String postExplain;
 
     @Builder
-    public Post(User userNo, Long receiptCount, String title, String tag, String explain) {
+    public Post(User userNo, Long userCount, String postTitle, String postTag, String postExplain) {
         this.userNo = userNo;
-        this.receiptCount = receiptCount;
-        this.title = title;
-        this.tag = tag;
-        this.explain = explain;
+        this.userCount = userCount;
+        this.postTitle = postTitle;
+        this.postTag = postTag;
+        this.postExplain = postExplain;
     }
 
-    public void update(User userNo, Long receiptCount, String title, String tag, String explain) {
-        this.userNo = userNo;
-        this.receiptCount = receiptCount;
-        this.title = title;
-        this.tag = tag;
-        this.explain = explain;
+    public void update(Long userCount, String postTitle, String postTag, String postExplain) {
+        this.userCount = userCount;
+        this.postTitle = postTitle;
+        this.postTag = postTag;
+        this.postExplain = postExplain;
     }
 }

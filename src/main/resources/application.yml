@@ -4,12 +4,16 @@ spring:
     url: jdbc:mysql://localhost:3306/share-scripts?serverTimezone=UTC
     username: root
     password: 1234
+    initialization-mode: always
+  sql:
+    init:
+      mode: always
   h2:
     console:
       enabled: true
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     show-sql: true
     properties:
       hibernate:

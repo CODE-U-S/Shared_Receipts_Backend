@@ -8,17 +8,17 @@ import lombok.Getter;
 public class PostResponse {
     private Long postNo;
     private User userNo;
-    private Long receiptCount;
-    private String title;
-    private String tag;
-    private String explain;
+    private Long userCount;
+    private String postTitle;
+    private String postTag;
+    private String postExplain;
 
     public PostResponse(Post post) {
         this.postNo = post.getPostNo();
         this.userNo = post.getUserNo();
-        this.receiptCount = post.getReceiptCount();
-        this.title = post.getTitle();
-        this.tag = post.getTag();
-        this.explain = post.getExplain();
+        this.userCount = post.getUserCount();
+        this.postTitle = post.getPostTitle();
+        this.postTag = post.getPostTag();
+        this.postExplain = post.getPostExplain();
     }
 }

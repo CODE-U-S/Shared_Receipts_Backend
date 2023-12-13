@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class UpdatePostRequest {
-    private User userNo;
-    private Long receiptCount;
-    private String title;
-    private String tag;
-    private String explain;
+    private Long userCount;
+    private String postTitle;
+    private String postTag;
+    private String postExplain;
 }
