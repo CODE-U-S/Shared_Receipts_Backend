@@ -14,11 +14,12 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/api/users")
 public class UserController {
     private final UserService userService;
 
     // create
-    @PostMapping("/api/users")
+    @PostMapping
     public ResponseEntity<User> addUser(@RequestBody AddUserRequest request) {
         User savedUser = userService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -26,7 +27,7 @@ public class UserController {
     }
 
     // read
-    @GetMapping("/api/users")
+    @GetMapping
     public ResponseEntity<List<UserResponse>> findAllUsers() {
         List<UserResponse> users = userService.findAll()
                 .stream()
@@ -37,7 +38,7 @@ public class UserController {
     }
 
     // update
-    @PutMapping("/api/users/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id,
                                            @RequestBody UpdateUserRequest request) {
         User updatedUser = userService.update(id, request);
@@ -46,7 +47,7 @@ public class UserController {
     }
 
     // delete
-    @DeleteMapping("/api/users/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.delete(id);
 

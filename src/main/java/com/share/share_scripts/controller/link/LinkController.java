@@ -14,10 +14,11 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/api/link")
 public class LinkController {
     private final LinkService linkService;
 
-    @PostMapping("/api/link")
+    @PostMapping
     public ResponseEntity<Link> addLink(@RequestBody AddLinkRequest request) {
         Link savedLink = linkService.save(request);
 
@@ -25,7 +26,7 @@ public class LinkController {
                 .body(savedLink);
     }
 
-    @GetMapping("/api/link")
+    @GetMapping
     public ResponseEntity<List<LinkResponse>> findAllLink() {
         List<LinkResponse> link = linkService.findAll()
                 .stream()
@@ -35,7 +36,7 @@ public class LinkController {
         return ResponseEntity.ok().body(link);
     }
 
-    @PutMapping("/api/link/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Link> updateLink(@PathVariable Long id,
                                            @RequestBody UpdateLinkRequest request) {
         Link updatedLink = linkService.update(id, request);
@@ -44,7 +45,7 @@ public class LinkController {
                 .body(updatedLink);
     }
 
-    @DeleteMapping("/api/link/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteLink(@PathVariable Long id) {
         linkService.delete(id);
         return ResponseEntity.ok()

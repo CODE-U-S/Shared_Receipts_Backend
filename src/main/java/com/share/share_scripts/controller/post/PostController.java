@@ -14,18 +14,19 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/api/post")
 public class PostController {
 
     private final PostService postService;
 
-    @PostMapping("/api/post")
+    @PostMapping
     public ResponseEntity<Post> addPost(@RequestBody AddPostRequest request) {
         Post savedPost = postService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedPost);
     }
 
-    @GetMapping("/api/post")
+    @GetMapping
     public ResponseEntity<List<PostResponse>> findAllPost() {
         List<PostResponse> post = postService.findAll()
                 .stream()
@@ -35,7 +36,7 @@ public class PostController {
         return ResponseEntity.ok().body(post);
     }
 
-    @PutMapping("/api/post/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Post> updatePost(@PathVariable Long id,
                                            @RequestBody UpdatePostRequest request) {
         Post updatedPost = postService.update(id, request);
@@ -44,7 +45,7 @@ public class PostController {
                 .body(updatedPost);
     }
 
-    @DeleteMapping("/api/post/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable Long id) {
         postService.delete(id);
         return ResponseEntity.ok()
