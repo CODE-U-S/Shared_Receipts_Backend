@@ -30,8 +30,7 @@ public class LinkService {
         Link link = linkRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found: " + id ));
 
-        link.update(request.getPostNo(),
-                request.getUrl());
+        link.update(request.getUrl());
 
         return link;
     }

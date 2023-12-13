@@ -3,7 +3,6 @@ package com.share.share_scripts.controller.favorite;
 import com.share.share_scripts.domain.favorite.Favorite;
 import com.share.share_scripts.dto.favorite.AddFavoriteRequest;
 import com.share.share_scripts.dto.favorite.FavoriteResponse;
-import com.share.share_scripts.dto.favorite.UpdateFavoriteRequest;
 import com.share.share_scripts.service.favorite.FavoriteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -33,15 +32,6 @@ public class FavoriteController {
                 .toList();
 
         return ResponseEntity.ok().body(favorite);
-    }
-
-    @PutMapping("/api/favorite/{id}")
-    public ResponseEntity<Favorite> updateFavorite(@PathVariable Long id,
-                                                   @RequestBody UpdateFavoriteRequest request) {
-        Favorite updatedFavorite = favoriteService.update(id, request);
-
-        return ResponseEntity.ok()
-                .body(updatedFavorite);
     }
 
     @DeleteMapping("/api/favorite/{id}")

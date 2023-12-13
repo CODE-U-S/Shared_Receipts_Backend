@@ -41,8 +41,7 @@ public class Receipt {
         this.price = price;
     }
 
-    public void update(Post postNo, String name, Integer price) {
-        this.postNo = postNo;
+    public void update(String name, Integer price) {
         this.name = name;
         this.price = price;
     }

@@ -30,9 +30,4 @@ public class Favorite {
         this.userNo = userNo;
         this.postNo = postNo;
     }
-
-    public void update(User userNo, Post postNo) {
-        this.userNo = userNo;
-        this.postNo = postNo;
-    }
 }
