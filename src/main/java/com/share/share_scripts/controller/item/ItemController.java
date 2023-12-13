@@ -14,10 +14,11 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/api/item")
 public class ItemController {
     private final ItemService itemService;
 
-    @PostMapping("/api/item")
+    @PostMapping
     public ResponseEntity<Item> addItem(@RequestBody AddItemRequest request) {
         Item savedItem = itemService.save(request);
 
@@ -25,7 +26,7 @@ public class ItemController {
                 .body(savedItem);
     }
 
-    @GetMapping("/api/item")
+    @GetMapping
     public ResponseEntity<List<ItemResponse>> findAllItem() {
         List<ItemResponse> item = itemService.findAll()
                 .stream()
@@ -35,7 +36,7 @@ public class ItemController {
         return ResponseEntity.ok().body(item);
     }
 
-    @PutMapping("/api/item/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Item> updateItem(@PathVariable Long id,
                                            @RequestBody UpdateItemRequest request) {
         Item updatedItem = itemService.update(id, request);
@@ -44,7 +45,7 @@ public class ItemController {
                 .body(updatedItem);
     }
 
-    @DeleteMapping("/api/item/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
         itemService.delete(id);
         return ResponseEntity.ok().build();
