@@ -16,7 +16,7 @@ public class Link {
     @Column(name = "link_no", updatable = false)
     private Long linkNo;
 
-    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne
     @JoinColumn(name = "post_no")
     private Post postNo;
 
