@@ -1,5 +1,8 @@
 package com.share.share_scripts.domain.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.share.share_scripts.domain.favorite.Favorite;
+import com.share.share_scripts.domain.post.Post;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -45,6 +48,14 @@ public class User implements UserDetails {
 
     @Column(name = "user_img", nullable = false)
     private String userImg;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "userNo", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    private List<Post> postList;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "userNo", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    private List<Favorite> favoriteList;
 
     @Builder
     public User(String userName, String userId, String userPw, String userEmail, String userPhone, Date userBirth, Integer userGender, String userImg) {
