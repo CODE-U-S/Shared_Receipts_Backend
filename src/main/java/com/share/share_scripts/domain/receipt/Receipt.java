@@ -17,7 +17,7 @@ public class Receipt {
     private Long receiptNo;
 
     @ManyToOne
-    @JoinColumn(name = "post_no", referencedColumnName = "post_no")
+    @JoinColumn(name = "post_no")
     private Post postNo;
 
     @Column(name = "name")

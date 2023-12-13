@@ -28,11 +28,11 @@ public class PostService {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
 
-        post.update(request.getUserNo(),
-                request.getReceiptCount(),
-                request.getTitle(),
-                request.getTag(),
-                request.getExplain()
+        post.update(
+                request.getUserCount(),
+                request.getPostTitle(),
+                request.getPostTag(),
+                request.getPostExplain()
         );
 
         return post;

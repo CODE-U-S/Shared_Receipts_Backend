@@ -18,11 +18,11 @@ public class Favorite {
     private Long favoriteNo;
 
     @ManyToOne
-    @JoinColumn(name = "user_no", referencedColumnName = "user_no")
+    @JoinColumn(name = "user_no")
     private User userNo;
 
     @ManyToOne
-    @JoinColumn(name = "post_no", referencedColumnName = "post_no")
+    @JoinColumn(name = "post_no")
     private Post postNo;
 
     @Builder

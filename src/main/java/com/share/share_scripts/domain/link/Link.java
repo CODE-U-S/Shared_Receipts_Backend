@@ -17,7 +17,7 @@ public class Link {
     private Long linkNo;
 
     @ManyToOne
-    @JoinColumn(name = "post_no", referencedColumnName = "post_no")
+    @JoinColumn(name = "post_no")
     private Post postNo;
 
     @Column(name = "url")
