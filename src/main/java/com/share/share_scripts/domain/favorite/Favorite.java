@@ -17,11 +17,11 @@ public class Favorite {
     @Column(name = "favorite_no", updatable = false)
     private Long favoriteNo;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "user_no")
     private User userNo;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "post_no")
     private Post postNo;
 

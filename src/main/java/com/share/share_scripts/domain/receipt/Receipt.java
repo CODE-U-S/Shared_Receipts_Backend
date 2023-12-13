@@ -16,7 +16,7 @@ public class Receipt {
     @Column(name = "receipt_no", updatable = false)
     private Long receiptNo;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "post_no")
     private Post postNo;
 
