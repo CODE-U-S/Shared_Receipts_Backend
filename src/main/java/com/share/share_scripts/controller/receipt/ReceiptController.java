@@ -17,17 +17,18 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/api/receipt")
 public class ReceiptController {
     private final ReceiptService receiptService;
 
-    @PostMapping("/api/receipt")
+    @PostMapping
     public ResponseEntity<Receipt> addReceipt(@RequestBody AddReceiptRequest request) {
         Receipt savedReceipt = receiptService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedReceipt);
     }
 
-    @GetMapping("/api/receipt")
+    @GetMapping
     public ResponseEntity<List<ReceiptResponse>> findAllReceipt() {
         List<ReceiptResponse> receipt = receiptService.findAll()
                 .stream()
@@ -37,7 +38,7 @@ public class ReceiptController {
         return ResponseEntity.ok().body(receipt);
     }
 
-    @PutMapping("/api/receipt/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Receipt> updateReceipt(@PathVariable Long id,
                                                  @RequestBody UpdateReceiptRequest request) {
         Receipt updatedReceipt = receiptService.update(id, request);
@@ -46,7 +47,7 @@ public class ReceiptController {
                 .body(updatedReceipt);
     }
 
-    @DeleteMapping("/api/receipt/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteReceipt(@PathVariable Long id) {
         receiptService.delete(id);
         return ResponseEntity.ok()
