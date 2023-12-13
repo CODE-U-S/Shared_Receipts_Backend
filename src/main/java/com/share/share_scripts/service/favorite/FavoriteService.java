@@ -2,7 +2,6 @@ package com.share.share_scripts.service.favorite;
 
 import com.share.share_scripts.domain.favorite.Favorite;
 import com.share.share_scripts.dto.favorite.AddFavoriteRequest;
-import com.share.share_scripts.dto.favorite.UpdateFavoriteRequest;
 import com.share.share_scripts.repository.favorite.FavoriteRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -20,15 +19,4 @@ public class FavoriteService {
     public List<Favorite> findAll() { return favoriteRepository.findAll(); }
 
     public void delete(Long id) { favoriteRepository.deleteById(id); }
-
-    @Transactional
-    public Favorite update(Long id, UpdateFavoriteRequest request) {
-        Favorite favorite = favoriteRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
-
-        favorite.update(request.getUserNo(),
-                request.getPostNo());
-
-        return favorite;
-    }
 }

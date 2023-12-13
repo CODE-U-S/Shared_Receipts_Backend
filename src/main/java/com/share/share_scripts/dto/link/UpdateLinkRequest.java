@@ -9,6 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class UpdateLinkRequest {
-    private Post postNo;
     private String url;
 }

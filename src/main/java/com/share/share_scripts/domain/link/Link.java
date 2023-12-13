@@ -29,8 +29,5 @@ public class Link {
         this.url = url;
     }
 
-    public void update(Post postNo, String url) {
-        this.postNo = postNo;
-        this.url = url;
-    }
+    public void update(String url) { this.url = url; }
 }

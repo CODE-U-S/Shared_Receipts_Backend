@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class UpdateReceiptRequest {
-    private Post postNo;
     private String name;
     private Integer price;
 }

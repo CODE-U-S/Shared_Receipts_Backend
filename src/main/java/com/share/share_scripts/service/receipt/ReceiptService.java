@@ -29,9 +29,10 @@ public class ReceiptService {
         Receipt receipt = receiptRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
 
-        receipt.update(request.getPostNo(),
+        receipt.update(
                 request.getName(),
-                request.getPrice());
+                request.getPrice()
+        );
 
         return receipt;
     }
