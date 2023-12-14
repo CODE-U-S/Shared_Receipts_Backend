@@ -1,6 +1,7 @@
 package com.share.share_scripts.domain.post;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.share.share_scripts.domain.BaseTimeEntity;
 import com.share.share_scripts.domain.favorite.Favorite;
 import com.share.share_scripts.domain.link.Link;
 import com.share.share_scripts.domain.receipt.Receipt;
@@ -16,7 +17,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Post {
+public class Post extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "post_no", updatable = false)
