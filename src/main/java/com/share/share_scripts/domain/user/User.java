@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.share.share_scripts.domain.favorite.Favorite;
 import com.share.share_scripts.domain.post.Post;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.util.Date;
@@ -19,28 +20,43 @@ public class User {
     @Column(name = "user_no", updatable = false)
     private Long userNo;
 
-    @Column(name = "user_name", nullable = false)
+    @NotBlank(message = "사용자 이름은 필수값 입니다.")
+    @Column(name = "user_name")
     private String userName;
 
-    @Column(name = "user_id", nullable = false)
+    @NotBlank(message = "사용자 아이디는 필수값 입니다.")
+    @Column(name = "user_id")
     private String userId;
 
-    @Column(name = "user_pw", nullable = false)
+    @NotBlank(message = "사용자 비밀번호는 필수값 입니다.")
+    @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,16}",
+             message = "비밀번호는 영문 대,소문자와 숫자, 특수기호가 적어도 1개 이상씩 포함된 8자 ~ 16자의 비밀번호여야 합니다.")
+    @Column(name = "user_pw")
     private String userPw;
 
-    @Column(name = "user_email", nullable = false)
+    @NotBlank(message = "사용자 이메일은 필수값 입니다.")
+    @Email(message = "이메일 형식이 아닙니다.")
+    @Column(name = "user_email")
     private String userEmail;
 
-    @Column(name = "user_phone", nullable = false)
+    @NotBlank(message = "사용자 전화번호는 필수값 입니다.")
+    @Pattern(regexp = "(0\\d{1,2})-(\\d{3,4})-(\\d{4})",
+             message = "전화번호 형식이 아닙니다.")
+    @Column(name = "user_phone")
     private String userPhone;
 
-    @Column(name = "user_birth", nullable = false)
+    @NotBlank(message = "사용자 생년월일은 필수값 입니다.")
+    @Pattern(regexp = "\\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])",
+             message = "생년월일 형식이 아닙니다.")
+    @PastOrPresent(message = "미래값은 들어갈 수 없습니다.")
+    @Column(name = "user_birth")
     private Date userBirth;
 
-    @Column(name = "user_gender", nullable = false)
+    @NotNull(message = "사용자 성별은 필수값 입니다.")
+    @Column(name = "user_gender")
     private Integer userGender;
 
-    @Column(name = "user_img", nullable = false)
+    @Column(name = "user_img")
     private String userImg;
 
     @JsonIgnore

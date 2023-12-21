@@ -27,13 +27,13 @@ public class Post extends BaseTimeEntity {
     @JoinColumn(name = "user_no")
     private User userNo;
 
-    @Column(name = "user_count", nullable = false)
+    @Column(name = "user_count")
     private Long userCount;
 
-    @Column(name = "post_title", nullable = false)
+    @Column(name = "post_title")
     private String postTitle;
 
-    @Column(name = "post_tag", nullable = false)
+    @Column(name = "post_tag")
     private String postTag;
 
     @Column(name = "post_explain")
