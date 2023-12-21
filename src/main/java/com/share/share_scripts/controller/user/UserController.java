@@ -5,6 +5,7 @@ import com.share.share_scripts.dto.user.UserResponse;
 import com.share.share_scripts.service.user.UserService;
 import com.share.share_scripts.domain.user.User;
 import com.share.share_scripts.dto.user.AddUserRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class UserController {
 
     // create
     @PostMapping
-    public ResponseEntity<User> addUser(@RequestBody AddUserRequest request) {
+    public ResponseEntity<User> addUser(@Valid @RequestBody AddUserRequest request) {
         User savedUser = userService.save(request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedUser);
