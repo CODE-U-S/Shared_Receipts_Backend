@@ -1,6 +1,8 @@
 package com.share.share_scripts.service.user;
 
 import com.share.share_scripts.dto.user.UpdateUserRequest;
+import com.share.share_scripts.exception.DuplicateException;
+import com.share.share_scripts.exception.handler.ErrorCode;
 import com.share.share_scripts.repository.user.UserRepository;
 import com.share.share_scripts.domain.user.User;
 import com.share.share_scripts.dto.user.AddUserRequest;
@@ -16,7 +18,15 @@ public class UserService {
     private final UserRepository userRepository;
 
     // create
-    public User save(AddUserRequest request) { return userRepository.save(request.toEntity()); }
+    public User save(AddUserRequest request) {
+
+        // 중복된 아이디 체크
+        if(userRepository.existsByUserId(request.getUserId())) {
+            throw new DuplicateException(ErrorCode.ID_DUPLICATE);
+        }
+
+        return userRepository.save(request.toEntity());
+    }
 
     // read
     public List<User> findAll() { return userRepository.findAll(); }
