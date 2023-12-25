@@ -12,11 +12,7 @@ import java.util.Date;
 @Getter
 public class UpdateUserRequest {
     private String userName;
-    private String userId;
     private String userPw;
-    private String userEmail;
-    private String userPhone;
-    private LocalDate userBirth;
     private Integer userGender;
     private String userImg;
 }
