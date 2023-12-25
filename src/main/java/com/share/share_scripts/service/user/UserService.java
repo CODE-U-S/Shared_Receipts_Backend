@@ -3,12 +3,14 @@ package com.share.share_scripts.service.user;
 import com.share.share_scripts.dto.user.UpdateUserRequest;
 import com.share.share_scripts.exception.BadRequestException;
 import com.share.share_scripts.exception.DuplicateException;
+import com.share.share_scripts.exception.UserNotFoundException;
 import com.share.share_scripts.exception.handler.ErrorCode;
 import com.share.share_scripts.repository.user.UserRepository;
 import com.share.share_scripts.domain.user.User;
 import com.share.share_scripts.dto.user.AddUserRequest;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
@@ -35,15 +37,22 @@ public class UserService {
     public List<User> findAll() { return userRepository.findAll(); }
 
     // delete
-    public void delete(Long id) { userRepository.deleteById(id); }
+    public void delete(Long id) {
+        // 유저를 찾지 못했을 경우 404 에러 발생
+        User user = userRepository.findById(id)
+                        .orElseThrow(() -> new UserNotFoundException(ErrorCode.USER_NOT_FOUND));
+
+        userRepository.deleteById(user.getUserNo());
+    }
 
     // update
     @Transactional
     public User update(Long id, UpdateUserRequest request, BindingResult bindingResult) {
         badRequestException(bindingResult);
 
+        // 유저를 찾지 못했을 경우 404 에러 발생
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
+                .orElseThrow(() -> new UserNotFoundException(ErrorCode.USER_NOT_FOUND));
 
         user.update(
                 request.getUserName(),
