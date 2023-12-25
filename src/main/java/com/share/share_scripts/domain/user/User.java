@@ -19,28 +19,28 @@ public class User {
     @Column(name = "user_no", updatable = false)
     private Long userNo;
 
-    @Column(name = "user_name", nullable = false)
+    @Column(name = "user_name")
     private String userName;
 
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id")
     private String userId;
 
-    @Column(name = "user_pw", nullable = false)
+    @Column(name = "user_pw")
     private String userPw;
 
-    @Column(name = "user_email", nullable = false)
+    @Column(name = "user_email")
     private String userEmail;
 
-    @Column(name = "user_phone", nullable = false)
+    @Column(name = "user_phone")
     private String userPhone;
 
-    @Column(name = "user_birth", nullable = false)
+    @Column(name = "user_birth")
     private Date userBirth;
 
-    @Column(name = "user_gender", nullable = false)
+    @Column(name = "user_gender")
     private Integer userGender;
 
-    @Column(name = "user_img", nullable = false)
+    @Column(name = "user_img")
     private String userImg;
 
     @JsonIgnore
