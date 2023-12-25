@@ -1,4 +1,4 @@
-package com.share.share_scripts.exception;
+package com.share.share_scripts.exception.handler;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
