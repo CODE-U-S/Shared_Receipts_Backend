@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -35,7 +36,7 @@ public class AddUserRequest {
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @PastOrPresent
-    private Date userBirth;
+    private LocalDate userBirth;
 
     @NotNull
     private Integer userGender;
