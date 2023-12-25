@@ -1,9 +1,6 @@
 package com.share.share_scripts.exception.handler;
 
-import com.share.share_scripts.exception.BadRequestException;
-import com.share.share_scripts.exception.DuplicateException;
-import com.share.share_scripts.exception.PostNotFoundException;
-import com.share.share_scripts.exception.UserNotFoundException;
+import com.share.share_scripts.exception.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -29,6 +26,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity
                 .status(ErrorCode.POST_NOT_FOUND.getStatus().value())
                 .body(new ErrorResponse(ErrorCode.POST_NOT_FOUND));
+    }
+
+    @ExceptionHandler(ReceiptNotFoundException.class)
+    protected ResponseEntity handleReceiptNotFoundException(ReceiptNotFoundException e) {
+        return ResponseEntity
+                .status(ErrorCode.RECEIPT_NOT_FOUND.getStatus().value())
+                .body(new ErrorResponse(ErrorCode.RECEIPT_NOT_FOUND));
     }
 
     @ExceptionHandler(DuplicateException.class)
