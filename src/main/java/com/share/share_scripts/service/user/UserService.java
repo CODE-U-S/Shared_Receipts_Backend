@@ -47,11 +47,7 @@ public class UserService {
 
         user.update(
                 request.getUserName(),
-                request.getUserId(),
                 request.getUserPw(),
-                request.getUserEmail(),
-                request.getUserPhone(),
-                request.getUserBirth(),
                 request.getUserGender(),
                 request.getUserImg()
         );

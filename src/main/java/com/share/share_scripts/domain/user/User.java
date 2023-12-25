@@ -64,13 +64,9 @@ public class User {
         this.userImg = userImg;
     }
 
-    public void update(String userName, String userId, String userPw, String userEmail, String userPhone, LocalDate userBirth, Integer userGender, String userImg) {
+    public void update(String userName, String userPw, Integer userGender, String userImg) {
         this.userName = userName;
-        this.userId = userId;
         this.userPw = userPw;
-        this.userEmail = userEmail;
-        this.userPhone = userPhone;
-        this.userBirth = userBirth;
         this.userGender = userGender;
         this.userImg = userImg;
     }
