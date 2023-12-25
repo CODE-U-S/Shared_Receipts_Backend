@@ -22,8 +22,8 @@ public class UserController {
 
     // create
     @PostMapping
-    public ResponseEntity<User> addUser(@Valid @RequestBody AddUserRequest request) {
-        User savedUser = userService.save(request);
+    public ResponseEntity<User> addUser(@Valid @RequestBody AddUserRequest request, BindingResult bindingResult) {
+        User savedUser = userService.save(request, bindingResult);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedUser);
     }
@@ -42,8 +42,9 @@ public class UserController {
     // update
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id,
-                                           @RequestBody UpdateUserRequest request) {
-        User updatedUser = userService.update(id, request);
+                                           @RequestBody UpdateUserRequest request,
+                                           BindingResult bindingResult) {
+        User updatedUser = userService.update(id, request, bindingResult);
 
         return ResponseEntity.ok().body(updatedUser);
     }
