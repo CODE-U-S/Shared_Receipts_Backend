@@ -1,13 +1,13 @@
 package com.share.share_scripts.service.user;
 
 import com.share.share_scripts.dto.user.UpdateUserRequest;
-import com.share.share_scripts.exception.BadRequestException;
 import com.share.share_scripts.exception.DuplicateException;
 import com.share.share_scripts.exception.UserNotFoundException;
 import com.share.share_scripts.exception.handler.ErrorCode;
 import com.share.share_scripts.repository.user.UserRepository;
 import com.share.share_scripts.domain.user.User;
 import com.share.share_scripts.dto.user.AddUserRequest;
+import com.share.share_scripts.service.BindingResultException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 @Service
-public class UserService {
+public class UserService extends BindingResultException {
     private final UserRepository userRepository;
 
     /**
@@ -123,13 +123,5 @@ public class UserService {
         );
 
         return user;
-    }
-
-    /**
-     * bad request인지 확인하는 메소드
-     * @param bindingResult
-     */
-    private void badRequestException(BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) throw new BadRequestException(ErrorCode.BAD_REQUEST);
     }
 }
