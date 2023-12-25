@@ -6,6 +6,7 @@ import com.share.share_scripts.dto.receipt.ReceiptResponse;
 import com.share.share_scripts.dto.receipt.UpdateReceiptRequest;
 import com.share.share_scripts.service.link.LinkService;
 import com.share.share_scripts.service.receipt.ReceiptService;
+import jakarta.validation.Valid;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ public class ReceiptController {
     private final ReceiptService receiptService;
 
     @PostMapping
-    public ResponseEntity<Receipt> addReceipt(@RequestBody AddReceiptRequest request, BindingResult bindingResult) {
+    public ResponseEntity<Receipt> addReceipt(@Valid @RequestBody AddReceiptRequest request, BindingResult bindingResult) {
         Receipt savedReceipt = receiptService.save(request, bindingResult);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedReceipt);
