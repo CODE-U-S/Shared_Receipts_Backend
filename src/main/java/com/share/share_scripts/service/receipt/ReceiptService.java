@@ -4,6 +4,10 @@ import com.share.share_scripts.domain.receipt.Receipt;
 import com.share.share_scripts.dto.post.AddPostRequest;
 import com.share.share_scripts.dto.receipt.AddReceiptRequest;
 import com.share.share_scripts.dto.receipt.UpdateReceiptRequest;
+import com.share.share_scripts.exception.PostNotFoundException;
+import com.share.share_scripts.exception.ReceiptNotFoundException;
+import com.share.share_scripts.exception.handler.ErrorCode;
+import com.share.share_scripts.repository.post.PostRepository;
 import com.share.share_scripts.repository.receipt.ReceiptRepository;
 import com.share.share_scripts.service.BindingResultException;
 import jakarta.transaction.Transactional;
@@ -17,9 +21,13 @@ import java.util.List;
 @Service
 public class ReceiptService extends BindingResultException {
     private final ReceiptRepository receiptRepository;
+    private final PostRepository postRepository;
 
     public Receipt save(AddReceiptRequest request, BindingResult bindingResult) {
         badRequestException(bindingResult);
+
+        postRepository.findById(request.getPostNo().getPostNo())
+                .orElseThrow(() -> new PostNotFoundException(ErrorCode.POST_NOT_FOUND));
 
         return receiptRepository.save(request.toEntity());
     }
@@ -33,7 +41,7 @@ public class ReceiptService extends BindingResultException {
         badRequestException(bindingResult);
 
         Receipt receipt = receiptRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
+                .orElseThrow(() -> new ReceiptNotFoundException(ErrorCode.RECEIPT_NOT_FOUND));
 
         receipt.update(
                 request.getName(),

@@ -20,6 +20,7 @@ public enum ErrorCode {
      */
     POST_NOT_FOUND(HttpStatus.NOT_FOUND, "게시글 정보를 찾을 수 없습니다."),
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "사용자 정보를 찾을 수 없습니다."),
+    RECEIPT_NOT_FOUND(HttpStatus.NOT_FOUND, "상품의 정보를 찾을 수 없습니다."),
 
 
     /**
