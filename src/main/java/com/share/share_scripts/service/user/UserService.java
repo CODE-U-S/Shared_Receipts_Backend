@@ -59,6 +59,21 @@ public class UserService {
     public List<User> findAll() { return userRepository.findAll(); }
 
     /**
+     * 특정 사용자 조회
+     *
+     * 200 OK : 사용자 조회 완료
+     *
+     * 404 Not Found : 사용자가 존재 하지 않을 경우
+     *
+     * @param id
+     * @return
+     */
+    public User findById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(ErrorCode.USER_NOT_FOUND));
+    }
+
+    /**
      * 사용자 삭제
      *
      * 200 OK : 사용자 삭제 완료
@@ -67,7 +82,7 @@ public class UserService {
      *  * 확인 후, 만약 로그인 된 상태 라면 delete 가능
      *  * 반대로 로그아웃 된 상태 라면 delete 불가능하도록 (delete 요청 시 405에러 발생시키기)
      *
-     * 404 Not Found : 사용자가 존재하지 않을 경우
+     * 404 Not Found : 사용자가 존재 하지 않을 경우
      * 405 METHOD_NOT_ALLOWED : 로그아웃 된 상태에서 delete 할 경우
      *
      * @param id
