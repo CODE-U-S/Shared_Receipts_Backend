@@ -4,6 +4,7 @@ import com.share.share_scripts.domain.receipt.Receipt;
 import com.share.share_scripts.dto.post.AddPostRequest;
 import com.share.share_scripts.dto.receipt.AddReceiptRequest;
 import com.share.share_scripts.dto.receipt.UpdateReceiptRequest;
+import com.share.share_scripts.exception.PostNotFoundException;
 import com.share.share_scripts.exception.handler.ErrorCode;
 import com.share.share_scripts.repository.post.PostRepository;
 import com.share.share_scripts.repository.receipt.ReceiptRepository;
