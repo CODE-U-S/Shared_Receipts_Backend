@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.stylesheets.LinkStyle;
 
@@ -22,8 +23,8 @@ public class ReceiptController {
     private final ReceiptService receiptService;
 
     @PostMapping
-    public ResponseEntity<Receipt> addReceipt(@RequestBody AddReceiptRequest request) {
-        Receipt savedReceipt = receiptService.save(request);
+    public ResponseEntity<Receipt> addReceipt(@RequestBody AddReceiptRequest request, BindingResult bindingResult) {
+        Receipt savedReceipt = receiptService.save(request, bindingResult);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedReceipt);
     }
@@ -40,8 +41,9 @@ public class ReceiptController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Receipt> updateReceipt(@PathVariable Long id,
-                                                 @RequestBody UpdateReceiptRequest request) {
-        Receipt updatedReceipt = receiptService.update(id, request);
+                                                 @RequestBody UpdateReceiptRequest request,
+                                                 BindingResult bindingResult) {
+        Receipt updatedReceipt = receiptService.update(id, request, bindingResult);
 
         return ResponseEntity.ok()
                 .body(updatedReceipt);
