@@ -9,6 +9,7 @@ import com.share.share_scripts.dto.user.AddUserRequest;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import java.util.List;
 
@@ -18,7 +19,8 @@ public class UserService {
     private final UserRepository userRepository;
 
     // create
-    public User save(AddUserRequest request) {
+    public User save(AddUserRequest request, BindingResult bindingResult) {
+        badRequestException(bindingResult);
 
         // 중복된 아이디 체크
         if(userRepository.existsByUserId(request.getUserId())) {
@@ -36,7 +38,9 @@ public class UserService {
 
     // update
     @Transactional
-    public User update(Long id, UpdateUserRequest request) {
+    public User update(Long id, UpdateUserRequest request, BindingResult bindingResult) {
+        badRequestException(bindingResult);
+
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
 
@@ -52,5 +56,9 @@ public class UserService {
         );
 
         return user;
+    }
+
+    private void badRequestException(BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) throw new BadRequestException(ErrorCode.BAD_REQUEST);
     }
 }
