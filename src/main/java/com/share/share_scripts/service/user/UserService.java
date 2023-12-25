@@ -1,6 +1,7 @@
 package com.share.share_scripts.service.user;
 
 import com.share.share_scripts.dto.user.UpdateUserRequest;
+import com.share.share_scripts.exception.BadRequestException;
 import com.share.share_scripts.exception.DuplicateException;
 import com.share.share_scripts.exception.handler.ErrorCode;
 import com.share.share_scripts.repository.user.UserRepository;
