@@ -6,6 +6,7 @@ import com.share.share_scripts.domain.post.Post;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class User {
     private String userPhone;
 
     @Column(name = "user_birth")
-    private Date userBirth;
+    private LocalDate userBirth;
 
     @Column(name = "user_gender")
     private Integer userGender;
@@ -52,7 +53,7 @@ public class User {
     private List<Favorite> favoriteList;
 
     @Builder
-    public User(String userName, String userId, String userPw, String userEmail, String userPhone, Date userBirth, Integer userGender, String userImg) {
+    public User(String userName, String userId, String userPw, String userEmail, String userPhone, LocalDate userBirth, Integer userGender, String userImg) {
         this.userName = userName;
         this.userId = userId;
         this.userPw = userPw;
@@ -63,7 +64,7 @@ public class User {
         this.userImg = userImg;
     }
 
-    public void update(String userName, String userId, String userPw, String userEmail, String userPhone, Date userBirth, Integer userGender, String userImg) {
+    public void update(String userName, String userId, String userPw, String userEmail, String userPhone, LocalDate userBirth, Integer userGender, String userImg) {
         this.userName = userName;
         this.userId = userId;
         this.userPw = userPw;

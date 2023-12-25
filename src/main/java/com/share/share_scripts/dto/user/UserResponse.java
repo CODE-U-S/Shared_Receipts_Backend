@@ -3,6 +3,7 @@ package com.share.share_scripts.dto.user;
 import com.share.share_scripts.domain.user.User;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -13,7 +14,7 @@ public class UserResponse {
     private final String userPw;
     private final String userEmail;
     private final String userPhone;
-    private final Date userBirth;
+    private final LocalDate userBirth;
     private final Integer userGender;
     private final String userImg;
 
