@@ -1,5 +1,6 @@
 package com.share.share_scripts.dto.user;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.share.share_scripts.domain.user.User;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -32,8 +33,7 @@ public class AddUserRequest {
     @Pattern(regexp = "(0\\d{1,2})-(\\d{3,4})-(\\d{4})")
     private String userPhone;
 
-    @NotBlank
-    @Pattern(regexp = "\\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @PastOrPresent
     private Date userBirth;
 
