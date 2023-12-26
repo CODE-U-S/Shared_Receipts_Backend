@@ -1,7 +1,6 @@
 package com.share.share_scripts.service.receipt;
 
 import com.share.share_scripts.domain.receipt.Receipt;
-import com.share.share_scripts.dto.post.AddPostRequest;
 import com.share.share_scripts.dto.receipt.AddReceiptRequest;
 import com.share.share_scripts.dto.receipt.UpdateReceiptRequest;
 import com.share.share_scripts.exception.PostNotFoundException;
@@ -9,7 +8,7 @@ import com.share.share_scripts.exception.ReceiptNotFoundException;
 import com.share.share_scripts.exception.handler.ErrorCode;
 import com.share.share_scripts.repository.post.PostRepository;
 import com.share.share_scripts.repository.receipt.ReceiptRepository;
-import com.share.share_scripts.service.BindingResultException;
+import com.share.share_scripts.exception.BindingResultException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

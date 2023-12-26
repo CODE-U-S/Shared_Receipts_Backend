@@ -1,4 +1,4 @@
-package com.share.share_scripts.service;
+package com.share.share_scripts.exception;
 
 import com.share.share_scripts.exception.BadRequestException;
 import com.share.share_scripts.exception.handler.ErrorCode;
