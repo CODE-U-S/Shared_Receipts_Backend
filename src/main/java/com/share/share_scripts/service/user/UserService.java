@@ -7,13 +7,14 @@ import com.share.share_scripts.exception.handler.ErrorCode;
 import com.share.share_scripts.repository.user.UserRepository;
 import com.share.share_scripts.domain.user.User;
 import com.share.share_scripts.dto.user.AddUserRequest;
-import com.share.share_scripts.exception.BindingResultException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
 import java.util.List;
+
+import static com.share.share_scripts.exception.BadRequestException.badRequestException;
 
 
 /**
@@ -23,7 +24,7 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 @Service
-public class UserService extends BindingResultException {
+public class UserService {
     private final UserRepository userRepository;
 
     /**
