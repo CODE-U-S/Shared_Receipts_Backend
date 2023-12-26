@@ -7,7 +7,7 @@ import com.share.share_scripts.exception.handler.ErrorCode;
 import com.share.share_scripts.repository.user.UserRepository;
 import com.share.share_scripts.domain.user.User;
 import com.share.share_scripts.dto.user.AddUserRequest;
-import com.share.share_scripts.service.BindingResultException;
+import com.share.share_scripts.exception.BindingResultException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
