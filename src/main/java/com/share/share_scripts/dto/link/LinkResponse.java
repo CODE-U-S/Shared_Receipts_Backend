@@ -9,12 +9,12 @@ import javax.swing.*;
 @Getter
 public class LinkResponse {
     private Long linkNo;
-    private Post postNo;
+    private Post post;
     private String url;
 
     public LinkResponse(Link link) {
         this.linkNo = link.getLinkNo();
-        this.postNo = link.getPostNo();
+        this.post = link.getPost();
         this.url = link.getUrl();
     }
 }

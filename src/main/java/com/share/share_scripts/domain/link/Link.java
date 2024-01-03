@@ -18,14 +18,14 @@ public class Link {
 
     @ManyToOne
     @JoinColumn(name = "post_no")
-    private Post postNo;
+    private Post post;
 
     @Column(name = "url")
     private String url;
 
     @Builder
-    public Link(Post postNo, String url) {
-        this.postNo = postNo;
+    public Link(Post post, String url) {
+        this.post = post;
         this.url = url;
     }
 

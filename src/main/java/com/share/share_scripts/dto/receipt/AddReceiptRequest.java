@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class AddReceiptRequest {
-    private Post postNo;
+    private Post post;
 
     @NotBlank
     private String name;
@@ -22,7 +22,7 @@ public class AddReceiptRequest {
 
     public Receipt toEntity() {
         return Receipt.builder()
-                .postNo(postNo)
+                .post(post)
                 .name(name)
                 .price(price)
                 .build();

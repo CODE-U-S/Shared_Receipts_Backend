@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class AddPostRequest {
-    private User userNo;
+    private User user;
     private Long userCount;
     private String postTitle;
     private String postTag;
@@ -18,7 +18,7 @@ public class AddPostRequest {
 
     public Post toEntity() {
         return Post.builder()
-                .userNo(userNo)
+                .user(user)
                 .userCount(userCount)
                 .postTitle(postTitle)
                 .postTag(postTag)

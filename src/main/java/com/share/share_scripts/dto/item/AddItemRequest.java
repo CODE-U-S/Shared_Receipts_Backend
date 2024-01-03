@@ -11,14 +11,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class AddItemRequest {
-    private Receipt receiptNo;
+    private Receipt receipt;
     private String itemName;
     private Long itemPrice;
     private Integer itemCount;
 
     public Item toEntity() {
         return Item.builder()
-                .receiptNo(receiptNo)
+                .receipt(receipt)
                 .itemName(itemName)
                 .itemPrice(itemPrice)
                 .itemCount(itemCount)

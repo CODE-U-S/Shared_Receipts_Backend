@@ -19,15 +19,15 @@ public class Favorite {
 
     @ManyToOne
     @JoinColumn(name = "user_no")
-    private User userNo;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "post_no")
-    private Post postNo;
+    private Post post;
 
     @Builder
-    public Favorite(User userNo, Post postNo) {
-        this.userNo = userNo;
-        this.postNo = postNo;
+    public Favorite(User user, Post post) {
+        this.user = user;
+        this.post = post;
     }
 }

@@ -25,7 +25,7 @@ public class Post extends BaseTimeEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_no")
-    private User userNo;
+    private User user;
 
     @Column(name = "user_count")
     private Long userCount;
@@ -40,20 +40,20 @@ public class Post extends BaseTimeEntity {
     private String postExplain;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "postNo", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    @OneToMany(mappedBy = "post", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<Receipt> receiptList;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "postNo", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    @OneToMany(mappedBy = "post", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<Link> linkList;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "postNo", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    @OneToMany(mappedBy = "post", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<Favorite> favoriteList;
 
     @Builder
-    public Post(User userNo, Long userCount, String postTitle, String postTag, String postExplain) {
-        this.userNo = userNo;
+    public Post(User user, Long userCount, String postTitle, String postTag, String postExplain) {
+        this.user = user;
         this.userCount = userCount;
         this.postTitle = postTitle;
         this.postTag = postTag;
