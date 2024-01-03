@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class AddReceiptRequest {
+    @NotNull
     private Post post;
 
     @NotBlank
