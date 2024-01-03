@@ -22,7 +22,7 @@ public class Receipt {
 
     @ManyToOne
     @JoinColumn(name = "post_no")
-    private Post postNo;
+    private Post post;
 
     @Column(name = "name")
     private String name;
@@ -31,12 +31,12 @@ public class Receipt {
     private Integer price;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "receiptNo", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
+    @OneToMany(mappedBy = "receipt", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<Item> itemList;
 
     @Builder
-    public Receipt(Post postNo, String name, Integer price) {
-        this.postNo = postNo;
+    public Receipt(Post post, String name, Integer price) {
+        this.post = post;
         this.name = name;
         this.price = price;
     }

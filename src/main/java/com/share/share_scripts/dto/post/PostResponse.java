@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 public class PostResponse {
     private Long postNo;
-    private User userNo;
+    private User user;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
     private Long userCount;
@@ -19,7 +19,7 @@ public class PostResponse {
 
     public PostResponse(Post post) {
         this.postNo = post.getPostNo();
-        this.userNo = post.getUserNo();
+        this.user = post.getUser();
         this.createdDate = post.getCreatedDate();
         this.modifiedDate = post.getModifiedDate();
         this.userCount = post.getUserCount();

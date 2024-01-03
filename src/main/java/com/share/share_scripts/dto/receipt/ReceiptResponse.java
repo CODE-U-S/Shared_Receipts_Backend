@@ -7,13 +7,13 @@ import lombok.Getter;
 @Getter
 public class ReceiptResponse {
     private Long receiptNo;
-    private Post postNo;
+    private Post post;
     private String name;
     private Integer price;
 
     public ReceiptResponse(Receipt receipt) {
         this.receiptNo = receipt.getReceiptNo();
-        this.postNo = receipt.getPostNo();
+        this.post = receipt.getPost();
         this.name = receipt.getName();
         this.price = receipt.getPrice();
     }

@@ -8,14 +8,14 @@ import lombok.Getter;
 @Getter
 public class ItemResponse {
     private Long itemNo;
-    private Receipt receiptNo;
+    private Receipt receipt;
     private String itemName;
     private Long itemPrice;
     private Integer itemCount;
 
     public ItemResponse(Item item) {
         this.itemNo = item.getItemNo();
-        this.receiptNo = item.getReceiptNo();
+        this.receipt = item.getReceipt();
         this.itemName = item.getItemName();
         this.itemPrice = item.getItemPrice();
         this.itemCount = item.getItemCount();

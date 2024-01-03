@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class AddLinkRequest {
-    private Post postNo;
+    private Post post;
     private String url;
 
     public Link toEntity() {
         return Link.builder()
-                .postNo(postNo)
+                .post(post)
                 .url(url)
                 .build();
     }

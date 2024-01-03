@@ -18,7 +18,7 @@ public class Item {
 
     @ManyToOne
     @JoinColumn(name = "receipt_no")
-    private Receipt receiptNo;
+    private Receipt receipt;
 
     @Column(name = "item_name")
     private String itemName;
@@ -30,8 +30,8 @@ public class Item {
     private Integer itemCount;
 
     @Builder
-    public Item(Receipt receiptNo, String itemName, Long itemPrice, Integer itemCount) {
-        this.receiptNo = receiptNo;
+    public Item(Receipt receipt, String itemName, Long itemPrice, Integer itemCount) {
+        this.receipt = receipt;
         this.itemName = itemName;
         this.itemPrice = itemPrice;
         this.itemCount = itemCount;

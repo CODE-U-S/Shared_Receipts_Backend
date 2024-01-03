@@ -8,12 +8,12 @@ import lombok.Getter;
 @Getter
 public class FavoriteResponse {
     private Long favoriteNo;
-    private User userNo;
-    private Post postNo;
+    private User user;
+    private Post post;
 
     public FavoriteResponse(Favorite favorite) {
         this.favoriteNo = favorite.getFavoriteNo();
-        this.userNo = favorite.getUserNo();
-        this.postNo = favorite.getPostNo();
+        this.user = favorite.getUser();
+        this.post = favorite.getPost();
     }
 }

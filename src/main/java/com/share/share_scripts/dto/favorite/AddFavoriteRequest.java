@@ -12,13 +12,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class AddFavoriteRequest {
-    private User userNo;
-    private Post postNo;
+    private User user;
+    private Post post;
 
     public Favorite toEntity() {
         return Favorite.builder()
-                .userNo(userNo)
-                .postNo(postNo)
+                .user(user)
+                .post(post)
                 .build();
     }
 }
