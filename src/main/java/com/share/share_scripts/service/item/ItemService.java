@@ -3,6 +3,7 @@ package com.share.share_scripts.service.item;
 import com.share.share_scripts.domain.item.Item;
 import com.share.share_scripts.dto.item.AddItemRequest;
 import com.share.share_scripts.dto.item.UpdateItemRequest;
+import com.share.share_scripts.exception.ItemNotFoundException;
 import com.share.share_scripts.exception.ReceiptNotFoundException;
 import com.share.share_scripts.exception.handler.ErrorCode;
 import com.share.share_scripts.repository.item.ItemRepository;
