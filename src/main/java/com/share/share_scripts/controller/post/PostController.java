@@ -5,9 +5,11 @@ import com.share.share_scripts.dto.post.AddPostRequest;
 import com.share.share_scripts.dto.post.PostResponse;
 import com.share.share_scripts.dto.post.UpdatePostRequest;
 import com.share.share_scripts.service.post.PostService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +22,8 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping
-    public ResponseEntity<Post> addPost(@RequestBody AddPostRequest request) {
-        Post savedPost = postService.save(request);
+    public ResponseEntity<Post> addPost(@Valid @RequestBody AddPostRequest request, BindingResult bindingResult) {
+        Post savedPost = postService.save(request, bindingResult);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedPost);
     }
@@ -38,8 +40,9 @@ public class PostController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Post> updatePost(@PathVariable Long id,
-                                           @RequestBody UpdatePostRequest request) {
-        Post updatedPost = postService.update(id, request);
+                                           @Valid @RequestBody UpdatePostRequest request,
+                                           BindingResult bindingResult) {
+        Post updatedPost = postService.update(id, request, bindingResult);
 
         return ResponseEntity.ok()
                 .body(updatedPost);
