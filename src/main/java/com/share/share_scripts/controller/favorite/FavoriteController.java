@@ -4,9 +4,11 @@ import com.share.share_scripts.domain.favorite.Favorite;
 import com.share.share_scripts.dto.favorite.AddFavoriteRequest;
 import com.share.share_scripts.dto.favorite.FavoriteResponse;
 import com.share.share_scripts.service.favorite.FavoriteService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +20,8 @@ public class FavoriteController {
     private final FavoriteService favoriteService;
 
     @PostMapping
-    public ResponseEntity<Favorite> addFavorite(@RequestBody AddFavoriteRequest request) {
-        Favorite savedFavorite = favoriteService.save(request);
+    public ResponseEntity<Favorite> addFavorite(@Valid @RequestBody AddFavoriteRequest request, BindingResult bindingResult) {
+        Favorite savedFavorite = favoriteService.save(request, bindingResult);
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedFavorite);
