@@ -42,7 +42,7 @@ public class ReceiptController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Receipt> updateReceipt(@PathVariable Long id,
-                                                 @RequestBody UpdateReceiptRequest request,
+                                                 @Valid @RequestBody UpdateReceiptRequest request,
                                                  BindingResult bindingResult) {
         Receipt updatedReceipt = receiptService.update(id, request, bindingResult);
 
