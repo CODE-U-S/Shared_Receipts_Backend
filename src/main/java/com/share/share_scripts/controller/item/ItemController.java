@@ -5,9 +5,11 @@ import com.share.share_scripts.dto.item.AddItemRequest;
 import com.share.share_scripts.dto.item.ItemResponse;
 import com.share.share_scripts.dto.item.UpdateItemRequest;
 import com.share.share_scripts.service.item.ItemService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +21,8 @@ public class ItemController {
     private final ItemService itemService;
 
     @PostMapping
-    public ResponseEntity<Item> addItem(@RequestBody AddItemRequest request) {
-        Item savedItem = itemService.save(request);
+    public ResponseEntity<Item> addItem(@Valid @RequestBody AddItemRequest request, BindingResult bindingResult) {
+        Item savedItem = itemService.save(request, bindingResult);
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedItem);
@@ -38,8 +40,9 @@ public class ItemController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Item> updateItem(@PathVariable Long id,
-                                           @RequestBody UpdateItemRequest request) {
-        Item updatedItem = itemService.update(id, request);
+                                           @Valid @RequestBody UpdateItemRequest request,
+                                           BindingResult bindingResult) {
+        Item updatedItem = itemService.update(id, request, bindingResult);
 
         return ResponseEntity.ok()
                 .body(updatedItem);

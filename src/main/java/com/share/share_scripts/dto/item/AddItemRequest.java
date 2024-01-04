@@ -3,6 +3,8 @@ package com.share.share_scripts.dto.item;
 import com.share.share_scripts.domain.item.Item;
 import com.share.share_scripts.domain.post.Post;
 import com.share.share_scripts.domain.receipt.Receipt;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,9 +13,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class AddItemRequest {
+    @NotNull
     private Receipt receipt;
+
+    @NotBlank
     private String itemName;
+
+    @NotNull
     private Long itemPrice;
+
+    @NotNull
     private Integer itemCount;
 
     public Item toEntity() {
