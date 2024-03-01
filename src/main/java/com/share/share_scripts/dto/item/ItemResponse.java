@@ -1,23 +1,22 @@
 package com.share.share_scripts.dto.item;
 
-import com.share.share_scripts.domain.favorite.Favorite;
 import com.share.share_scripts.domain.item.Item;
 import com.share.share_scripts.domain.receipt.Receipt;
 import lombok.Getter;
 
 @Getter
 public class ItemResponse {
-    private Long itemNo;
+    private Long id;
     private Receipt receipt;
-    private String itemName;
-    private Long itemPrice;
-    private Integer itemCount;
+    private String name;
+    private Long price;
+    private Integer count;
 
     public ItemResponse(Item item) {
-        this.itemNo = item.getItemNo();
+        this.id = item.getId();
         this.receipt = item.getReceipt();
-        this.itemName = item.getItemName();
-        this.itemPrice = item.getItemPrice();
-        this.itemCount = item.getItemCount();
+        this.name = item.getName();
+        this.price = item.getPrice();
+        this.count = item.getCount();
     }
 }

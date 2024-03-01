@@ -13,33 +13,33 @@ import lombok.NoArgsConstructor;
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "item_no", updatable = false)
-    private Long itemNo;
+    @Column(name = "id", updatable = false)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "receipt_no")
+    @JoinColumn(name = "receipt_id")
     private Receipt receipt;
 
-    @Column(name = "item_name")
-    private String itemName;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "item_price")
-    private Long itemPrice;
+    @Column(name = "price")
+    private Long price;
 
-    @Column(name = "item_count")
-    private Integer itemCount;
+    @Column(name = "count")
+    private Integer count;
 
     @Builder
-    public Item(Receipt receipt, String itemName, Long itemPrice, Integer itemCount) {
+    public Item(Receipt receipt, String name, Long price, Integer count) {
         this.receipt = receipt;
-        this.itemName = itemName;
-        this.itemPrice = itemPrice;
-        this.itemCount = itemCount;
+        this.name = name;
+        this.price = price;
+        this.count = count;
     }
 
-    public void update(String itemName, Long itemPrice, Integer itemCount) {
-        this.itemName = itemName;
-        this.itemPrice = itemPrice;
-        this.itemCount = itemCount;
+    public void update(String name, Long price, Integer count) {
+        this.name = name;
+        this.price = price;
+        this.count = count;
     }
 }

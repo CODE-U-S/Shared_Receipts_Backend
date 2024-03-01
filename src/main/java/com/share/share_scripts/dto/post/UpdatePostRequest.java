@@ -13,9 +13,9 @@ public class UpdatePostRequest {
     private Long userCount;
 
     @NotBlank
-    private String postTitle;
+    private String title;
 
-    private String postTag;
+    private String tag;
 
-    private String postExplain;
+    private String explain;
 }

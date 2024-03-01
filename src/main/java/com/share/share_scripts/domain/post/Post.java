@@ -20,24 +20,24 @@ import java.util.List;
 public class Post extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "post_no", updatable = false)
-    private Long postNo;
+    @Column(name = "id", updatable = false)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_no")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "user_count")
     private Long userCount;
 
-    @Column(name = "post_title")
-    private String postTitle;
+    @Column(name = "title")
+    private String title;
 
-    @Column(name = "post_tag")
-    private String postTag;
+    @Column(name = "tag")
+    private String tag;
 
-    @Column(name = "post_explain")
-    private String postExplain;
+    @Column(name = "explain")
+    private String explain;
 
     @JsonIgnore
     @OneToMany(mappedBy = "post", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
@@ -52,18 +52,18 @@ public class Post extends BaseTimeEntity {
     private List<Favorite> favoriteList;
 
     @Builder
-    public Post(User user, Long userCount, String postTitle, String postTag, String postExplain) {
+    public Post(User user, Long userCount, String title, String tag, String explain) {
         this.user = user;
         this.userCount = userCount;
-        this.postTitle = postTitle;
-        this.postTag = postTag;
-        this.postExplain = postExplain;
+        this.title = title;
+        this.tag = tag;
+        this.explain = explain;
     }
 
-    public void update(Long userCount, String postTitle, String postTag, String postExplain) {
+    public void update(Long userCount, String title, String tag, String explain) {
         this.userCount = userCount;
-        this.postTitle = postTitle;
-        this.postTag = postTag;
-        this.postExplain = postExplain;
+        this.title = title;
+        this.tag = tag;
+        this.explain = explain;
     }
 }

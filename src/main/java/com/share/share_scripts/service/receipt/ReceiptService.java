@@ -26,7 +26,7 @@ public class ReceiptService {
     public Receipt save(AddReceiptRequest request, BindingResult bindingResult) {
         badRequestException(bindingResult);
 
-        postRepository.findById(request.getPost().getPostNo())
+        postRepository.findById(request.getPost().getId())
                 .orElseThrow(() -> new PostNotFoundException(ErrorCode.POST_NOT_FOUND));
 
         return receiptRepository.save(request.toEntity());

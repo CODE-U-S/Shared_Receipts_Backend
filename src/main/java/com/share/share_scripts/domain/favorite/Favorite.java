@@ -14,15 +14,15 @@ import lombok.NoArgsConstructor;
 public class Favorite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "favorite_no", updatable = false)
-    private Long favoriteNo;
+    @Column(name = "id", updatable = false)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_no")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "post_no")
+    @JoinColumn(name = "post_id")
     private Post post;
 
     @Builder

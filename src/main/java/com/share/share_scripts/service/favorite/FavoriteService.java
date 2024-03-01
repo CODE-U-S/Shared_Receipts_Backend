@@ -27,10 +27,10 @@ public class FavoriteService {
     public Favorite save(AddFavoriteRequest request, BindingResult bindingResult) {
         badRequestException(bindingResult);
 
-        userRepository.findById(request.getUser().getUserNo())
+        userRepository.findById(request.getUser().getId())
                 .orElseThrow(() -> new UserNotFoundException(ErrorCode.USER_NOT_FOUND));
 
-        postRepository.findById(request.getPost().getPostNo())
+        postRepository.findById(request.getPost().getId())
                 .orElseThrow(() -> new PostNotFoundException(ErrorCode.POST_NOT_FOUND));
 
         return favoriteRepository.save(request.toEntity());

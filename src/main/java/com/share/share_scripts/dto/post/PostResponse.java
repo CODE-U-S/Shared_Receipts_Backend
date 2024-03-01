@@ -8,23 +8,23 @@ import java.time.LocalDateTime;
 
 @Getter
 public class PostResponse {
-    private Long postNo;
+    private Long id;
     private User user;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
-    private Long userCount;
-    private String postTitle;
-    private String postTag;
-    private String postExplain;
+    private Long count;
+    private String title;
+    private String tag;
+    private String explain;
 
     public PostResponse(Post post) {
-        this.postNo = post.getPostNo();
+        this.id = post.getId();
         this.user = post.getUser();
         this.createdDate = post.getCreatedDate();
         this.modifiedDate = post.getModifiedDate();
-        this.userCount = post.getUserCount();
-        this.postTitle = post.getPostTitle();
-        this.postTag = post.getPostTag();
-        this.postExplain = post.getPostExplain();
+        this.count = post.getUserCount();
+        this.title = post.getTitle();
+        this.tag = post.getTag();
+        this.explain = post.getExplain();
     }
 }
