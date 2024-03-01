@@ -17,42 +17,42 @@ import java.util.Date;
 @Setter
 public class AddUserRequest {
     @NotBlank
-    private String userName;
+    private String name;
 
     @NotBlank
     private String userId;
 
     @NotBlank
     @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,16}")
-    private String userPw;
+    private String pw;
 
     @NotBlank
     @Email
-    private String userEmail;
+    private String email;
 
     @NotBlank
     @Pattern(regexp = "(0\\d{1,2})-(\\d{3,4})-(\\d{4})")
-    private String userPhone;
+    private String phone;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @PastOrPresent
-    private LocalDate userBirth;
+    private LocalDate birth;
 
     @NotNull
-    private Integer userGender;
+    private Integer gender;
 
-    private String userImg;
+    private String img;
 
     public User toEntity() {
         return User.builder()
-                .userName(userName)
+                .name(name)
                 .userId(userId)
-                .userPw(userPw)
-                .userEmail(userEmail)
-                .userPhone(userPhone)
-                .userBirth(userBirth)
-                .userGender(userGender)
-                .userImg(userImg)
+                .pw(pw)
+                .email(email)
+                .phone(phone)
+                .birth(birth)
+                .gender(gender)
+                .img(img)
                 .build();
     }
 }

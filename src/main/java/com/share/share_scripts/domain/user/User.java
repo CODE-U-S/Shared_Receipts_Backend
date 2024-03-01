@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.share.share_scripts.domain.favorite.Favorite;
 import com.share.share_scripts.domain.post.Post;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -17,32 +19,32 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_no", updatable = false)
-    private Long userNo;
+    @Column(name = "id", updatable = false)
+    private Long id;
 
-    @Column(name = "user_name")
-    private String userName;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "user_id")
     private String userId;
 
-    @Column(name = "user_pw")
-    private String userPw;
+    @Column(name = "pw")
+    private String pw;
 
-    @Column(name = "user_email")
-    private String userEmail;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "user_phone")
-    private String userPhone;
+    @Column(name = "phone")
+    private String phone;
 
-    @Column(name = "user_birth")
-    private LocalDate userBirth;
+    @Column(name = "birth")
+    private LocalDate birth;
 
-    @Column(name = "user_gender")
-    private Integer userGender;
+    @Column(name = "gender")
+    private Integer gender;
 
-    @Column(name = "user_img")
-    private String userImg;
+    @Column(name = "img")
+    private String img;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
@@ -53,21 +55,21 @@ public class User {
     private List<Favorite> favoriteList;
 
     @Builder
-    public User(String userName, String userId, String userPw, String userEmail, String userPhone, LocalDate userBirth, Integer userGender, String userImg) {
-        this.userName = userName;
+    public User(String name, String userId, String pw, String email, String phone, LocalDate birth, Integer gender, String img) {
+        this.name = name;
         this.userId = userId;
-        this.userPw = userPw;
-        this.userEmail = userEmail;
-        this.userPhone = userPhone;
-        this.userBirth = userBirth;
-        this.userGender = userGender;
-        this.userImg = userImg;
+        this.pw = pw;
+        this.email = email;
+        this.phone = phone;
+        this.birth = birth;
+        this.gender = gender;
+        this.img = img;
     }
 
-    public void update(String userName, String userPw, Integer userGender, String userImg) {
-        this.userName = userName;
-        this.userPw = userPw;
-        this.userGender = userGender;
-        this.userImg = userImg;
+    public void update(String name, String pw, Integer gender, String img) {
+        this.name = name;
+        this.pw = pw;
+        this.gender = gender;
+        this.img = img;
     }
 }

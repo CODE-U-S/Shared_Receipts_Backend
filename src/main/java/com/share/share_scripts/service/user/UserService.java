@@ -93,7 +93,7 @@ public class UserService {
         User user = userRepository.findById(id)
                         .orElseThrow(() -> new UserNotFoundException(ErrorCode.USER_NOT_FOUND));
 
-        userRepository.deleteById(user.getUserNo());
+        userRepository.delete(user);
     }
 
     /**
@@ -117,10 +117,10 @@ public class UserService {
                 .orElseThrow(() -> new UserNotFoundException(ErrorCode.USER_NOT_FOUND));
 
         user.update(
-                request.getUserName(),
-                request.getUserPw(),
-                request.getUserGender(),
-                request.getUserImg()
+                request.getName(),
+                request.getPw(),
+                request.getGender(),
+                request.getImg()
         );
 
         return user;
