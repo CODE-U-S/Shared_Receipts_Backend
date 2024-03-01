@@ -15,14 +15,14 @@ import java.util.Date;
 @Getter
 public class UpdateUserRequest {
     @NotBlank
-    private String userName;
+    private String name;
 
     @NotBlank
     @Pattern(regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,16}")
-    private String userPw;
+    private String pw;
 
     @NotNull
-    private Integer userGender;
+    private Integer gender;
 
-    private String userImg;
+    private String img;
 }
