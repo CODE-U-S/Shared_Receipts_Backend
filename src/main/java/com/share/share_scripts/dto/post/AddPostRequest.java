@@ -18,19 +18,19 @@ public class AddPostRequest {
     private Long userCount;
 
     @NotBlank
-    private String postTitle;
+    private String title;
 
-    private String postTag;
+    private String tag;
 
-    private String postExplain;
+    private String explain;
 
     public Post toEntity() {
         return Post.builder()
                 .user(user)
                 .userCount(userCount)
-                .postTitle(postTitle)
-                .postTag(postTag)
-                .postExplain(postExplain)
+                .title(title)
+                .tag(tag)
+                .explain(explain)
                 .build();
     }
 }

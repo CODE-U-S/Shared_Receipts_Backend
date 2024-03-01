@@ -26,7 +26,7 @@ public class ItemService {
     public Item save(AddItemRequest request, BindingResult bindingResult) {
         badRequestException(bindingResult);
 
-        receiptRepository.findById(request.getReceipt().getReceiptNo())
+        receiptRepository.findById(request.getReceipt().getId())
                 .orElseThrow(() -> new ReceiptNotFoundException(ErrorCode.RECEIPT_NOT_FOUND));
 
         return itemRepository.save(request.toEntity());
@@ -44,9 +44,9 @@ public class ItemService {
                 .orElseThrow(() -> new ItemNotFoundException(ErrorCode.ITEM_NOT_FOUND));
 
         item.update(
-                request.getItemName(),
-                request.getItemPrice(),
-                request.getItemCount()
+                request.getName(),
+                request.getPrice(),
+                request.getCount()
         );
 
         return item;

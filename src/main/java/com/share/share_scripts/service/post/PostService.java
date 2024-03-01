@@ -26,7 +26,7 @@ public class PostService {
     public Post save(AddPostRequest request, BindingResult bindingResult) {
         badRequestException(bindingResult);
 
-        userRepository.findById(request.getUser().getUserNo())
+        userRepository.findById(request.getUser().getId())
                 .orElseThrow(() -> new UserNotFoundException(ErrorCode.USER_NOT_FOUND));
 
         return postRepository.save(request.toEntity());
@@ -45,9 +45,9 @@ public class PostService {
 
         post.update(
                 request.getUserCount(),
-                request.getPostTitle(),
-                request.getPostTag(),
-                request.getPostExplain()
+                request.getTitle(),
+                request.getTag(),
+                request.getExplain()
         );
 
         return post;

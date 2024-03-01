@@ -17,20 +17,20 @@ public class AddItemRequest {
     private Receipt receipt;
 
     @NotBlank
-    private String itemName;
+    private String name;
 
     @NotNull
-    private Long itemPrice;
+    private Long price;
 
     @NotNull
-    private Integer itemCount;
+    private Integer count;
 
     public Item toEntity() {
         return Item.builder()
                 .receipt(receipt)
-                .itemName(itemName)
-                .itemPrice(itemPrice)
-                .itemCount(itemCount)
+                .name(name)
+                .price(price)
+                .count(count)
                 .build();
     }
 }

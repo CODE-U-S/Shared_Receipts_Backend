@@ -17,11 +17,11 @@ import java.util.List;
 public class Receipt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "receipt_no", updatable = false)
-    private Long receiptNo;
+    @Column(name = "id", updatable = false)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "post_no")
+    @JoinColumn(name = "post_id")
     private Post post;
 
     @Column(name = "name")

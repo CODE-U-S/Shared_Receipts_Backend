@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class UpdateItemRequest {
-    private String itemName;
-    private Long itemPrice;
-    private Integer itemCount;
+    private String name;
+    private Long price;
+    private Integer count;
 }

@@ -8,12 +8,12 @@ import javax.swing.*;
 
 @Getter
 public class LinkResponse {
-    private Long linkNo;
+    private Long id;
     private Post post;
     private String url;
 
     public LinkResponse(Link link) {
-        this.linkNo = link.getLinkNo();
+        this.id = link.getId();
         this.post = link.getPost();
         this.url = link.getUrl();
     }

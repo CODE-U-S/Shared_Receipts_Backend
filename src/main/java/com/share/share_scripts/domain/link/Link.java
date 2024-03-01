@@ -13,11 +13,11 @@ import lombok.NoArgsConstructor;
 public class Link {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "link_no", updatable = false)
-    private Long linkNo;
+    @Column(name = "id", updatable = false)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "post_no")
+    @JoinColumn(name = "post_id")
     private Post post;
 
     @Column(name = "url")
