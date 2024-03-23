@@ -41,4 +41,11 @@ public class GlobalExceptionHandler {
                 .status(ErrorCode.ID_DUPLICATE.getStatus().value())
                 .body(new ErrorResponse(ErrorCode.ID_DUPLICATE));
     }
+
+    @ExceptionHandler(FollowNotFoundException.class)
+    protected ResponseEntity handleFollowNotFoundException(FollowNotFoundException e) {
+        return ResponseEntity
+                .status(ErrorCode.FOLLOW_NOT_FOUND.getStatus().value())
+                .body(new ErrorResponse(ErrorCode.FOLLOW_NOT_FOUND));
+    }
 }

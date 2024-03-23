@@ -14,6 +14,9 @@ public class AddFollowRequest {
     @NotNull(message = "to user의 id 값을 넣어주세요.")
     private Long toUser;
 
+    @NotNull(message = "from user의 id 값을 넣어주세요.")
+    private User fromUser;
+
     public Follow toEntity(Long toUser, User fromUser) {
         return new Follow(toUser, fromUser);
     }
