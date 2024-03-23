@@ -35,10 +35,24 @@ public class GlobalExceptionHandler {
                 .body(new ErrorResponse(ErrorCode.RECEIPT_NOT_FOUND));
     }
 
-    @ExceptionHandler(DuplicateException.class)
-    protected ResponseEntity handleDuplicateException(DuplicateException e) {
+    @ExceptionHandler(UserDuplicateException.class)
+    protected ResponseEntity handleUserDuplicateException(UserDuplicateException e) {
         return ResponseEntity
                 .status(ErrorCode.ID_DUPLICATE.getStatus().value())
                 .body(new ErrorResponse(ErrorCode.ID_DUPLICATE));
+    }
+
+    @ExceptionHandler(FollowNotFoundException.class)
+    protected ResponseEntity handleFollowNotFoundException(FollowNotFoundException e) {
+        return ResponseEntity
+                .status(ErrorCode.FOLLOW_NOT_FOUND.getStatus().value())
+                .body(new ErrorResponse(ErrorCode.FOLLOW_NOT_FOUND));
+    }
+
+    @ExceptionHandler(FollowDuplicateException.class)
+    protected ResponseEntity handleFollowDuplicateException(FollowDuplicateException e) {
+        return ResponseEntity
+                .status(ErrorCode.FOLLOW_DUPLICATE.getStatus().value())
+                .body(new ErrorResponse(ErrorCode.FOLLOW_DUPLICATE));
     }
 }

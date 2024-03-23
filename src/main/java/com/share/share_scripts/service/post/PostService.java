@@ -47,7 +47,7 @@ public class PostService {
                 request.getUserCount(),
                 request.getTitle(),
                 request.getTag(),
-                request.getExplain()
+                request.getPostExplain()
         );
 
         return post;

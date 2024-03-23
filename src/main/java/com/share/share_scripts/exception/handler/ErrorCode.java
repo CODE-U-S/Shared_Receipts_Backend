@@ -22,6 +22,7 @@ public enum ErrorCode {
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "사용자 정보를 찾을 수 없습니다."),
     RECEIPT_NOT_FOUND(HttpStatus.NOT_FOUND, "영수증의 정보를 찾을 수 없습니다."),
     ITEM_NOT_FOUND(HttpStatus.NOT_FOUND, "상품의 정보를 찾을 수 없습니다."),
+    FOLLOW_NOT_FOUND(HttpStatus.NOT_FOUND, "팔로우한 정보를 찾을 수 없습니다"),
 
 
     /**
@@ -33,6 +34,7 @@ public enum ErrorCode {
      * 409 ID_DUPLICATE : 중복된 아이디 요청
      */
     ID_DUPLICATE(HttpStatus.CONFLICT, "중복된 아이디입니다."),
+    FOLLOW_DUPLICATE(HttpStatus.CONFLICT, "중복된 팔로우 신청입니다."),
 
     /**
      * 500 INTERNAL_SERVER_ERROR : 내부 서버 오류

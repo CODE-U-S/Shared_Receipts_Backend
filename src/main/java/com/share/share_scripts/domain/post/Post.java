@@ -36,8 +36,8 @@ public class Post extends BaseTimeEntity {
     @Column(name = "tag")
     private String tag;
 
-    @Column(name = "explain")
-    private String explain;
+    @Column(name = "post_explain")
+    private String postExplain;
 
     @JsonIgnore
     @OneToMany(mappedBy = "post", cascade = {CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
@@ -52,18 +52,18 @@ public class Post extends BaseTimeEntity {
     private List<Favorite> favoriteList;
 
     @Builder
-    public Post(User user, Long userCount, String title, String tag, String explain) {
+    public Post(User user, Long userCount, String title, String tag, String postExplain) {
         this.user = user;
         this.userCount = userCount;
         this.title = title;
         this.tag = tag;
-        this.explain = explain;
+        this.postExplain = postExplain;
     }
 
-    public void update(Long userCount, String title, String tag, String explain) {
+    public void update(Long userCount, String title, String tag, String postExplain) {
         this.userCount = userCount;
         this.title = title;
         this.tag = tag;
-        this.explain = explain;
+        this.postExplain = postExplain;
     }
 }

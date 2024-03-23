@@ -15,7 +15,7 @@ public class PostResponse {
     private Long count;
     private String title;
     private String tag;
-    private String explain;
+    private String postExplain;
 
     public PostResponse(Post post) {
         this.id = post.getId();
@@ -25,6 +25,6 @@ public class PostResponse {
         this.count = post.getUserCount();
         this.title = post.getTitle();
         this.tag = post.getTag();
-        this.explain = post.getExplain();
+        this.postExplain = post.getPostExplain();
     }
 }
