@@ -17,5 +17,5 @@ public class UpdatePostRequest {
 
     private String tag;
 
-    private String explain;
+    private String postExplain;
 }

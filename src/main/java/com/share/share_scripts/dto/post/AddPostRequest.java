@@ -22,7 +22,7 @@ public class AddPostRequest {
 
     private String tag;
 
-    private String explain;
+    private String postExplain;
 
     public Post toEntity() {
         return Post.builder()
@@ -30,7 +30,7 @@ public class AddPostRequest {
                 .userCount(userCount)
                 .title(title)
                 .tag(tag)
-                .explain(explain)
+                .postExplain(postExplain)
                 .build();
     }
 }
