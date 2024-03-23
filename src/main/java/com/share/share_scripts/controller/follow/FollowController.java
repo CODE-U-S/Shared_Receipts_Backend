@@ -2,6 +2,8 @@ package com.share.share_scripts.controller.follow;
 
 import com.share.share_scripts.dto.follow.AddFollowRequest;
 import com.share.share_scripts.dto.follow.FollowResponse;
+import com.share.share_scripts.dto.follow.GetFromUserFollowRequest;
+import com.share.share_scripts.dto.follow.GetToUserFollowRequest;
 import com.share.share_scripts.service.follow.DeleteFollowService;
 import com.share.share_scripts.service.follow.GetFromUserFollowService;
 import com.share.share_scripts.service.follow.GetToUserFollowService;
@@ -27,13 +29,13 @@ public class FollowController {
     public void addFollow(@RequestBody @Valid AddFollowRequest request) { addFollowService.execute(request); }
 
     @GetMapping("/to")
-    public List<FollowResponse> getToUserFollow(@RequestBody @Valid AddFollowRequest request) {
-        return getToUserFollowService.execute(request.getToUser(), request.getFromUser());
+    public List<FollowResponse> getToUserFollow(@RequestBody @Valid GetToUserFollowRequest request) {
+        return getToUserFollowService.execute(request.getToUser());
     }
 
     @GetMapping("/from")
-    public List<FollowResponse> getFromUserFollow(@RequestBody @Valid AddFollowRequest request) {
-        return getFromUserFollowService.execute(request.getToUser(), request.getFromUser());
+    public List<FollowResponse> getFromUserFollow(@RequestBody @Valid GetFromUserFollowRequest request) {
+        return getFromUserFollowService.execute(request.getFromUser());
     }
 
     @DeleteMapping

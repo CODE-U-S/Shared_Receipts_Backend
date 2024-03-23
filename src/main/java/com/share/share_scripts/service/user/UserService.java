@@ -1,7 +1,7 @@
 package com.share.share_scripts.service.user;
 
 import com.share.share_scripts.dto.user.UpdateUserRequest;
-import com.share.share_scripts.exception.DuplicateException;
+import com.share.share_scripts.exception.UserDuplicateException;
 import com.share.share_scripts.exception.UserNotFoundException;
 import com.share.share_scripts.exception.handler.ErrorCode;
 import com.share.share_scripts.repository.user.UserRepository;
@@ -44,7 +44,7 @@ public class UserService {
 
         // 중복된 아이디 체크
         if(userRepository.existsByUserId(request.getUserId())) {
-            throw new DuplicateException(ErrorCode.ID_DUPLICATE);
+            throw new UserDuplicateException(ErrorCode.ID_DUPLICATE);
         }
 
         return userRepository.save(request.toEntity());

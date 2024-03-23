@@ -6,6 +6,6 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class DuplicateException extends RuntimeException {
+public class UserDuplicateException extends RuntimeException {
     private final ErrorCode errorCode;
 }

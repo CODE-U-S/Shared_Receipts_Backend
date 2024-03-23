@@ -20,8 +20,8 @@ public class GetFromUserFollowService {
     private final UserRepository userRepository;
 
     @Transactional(readOnly = true)
-    public List<FollowResponse> execute(Long toUserId, User fromUser) {
-        if(!userRepository.existsById(toUserId) || !userRepository.existsById(fromUser.getId())) throw new UserNotFoundException(ErrorCode.USER_NOT_FOUND);
+    public List<FollowResponse> execute(User fromUser) {
+        if(!userRepository.existsById(fromUser.getId())) throw new UserNotFoundException(ErrorCode.USER_NOT_FOUND);
 
         List<FollowResponse> follows = followRepository.findAllByFromUser(fromUser)
                 .stream()
